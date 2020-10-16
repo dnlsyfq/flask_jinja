@@ -37,3 +37,69 @@ html
 |default:| Defines a default string if the variable is not defined|
 |length: |Calculates the length of a string, list or dictionary variable|
 |dictsort:| Sorts a dictionary by its keys|
+
+### If statements 
+
+Variables can also be tested on their own. 
+* A variable defined as None or False or equates to 0 or contains an empty sequence such as "" or [] will test as False.
+
+```
+{% if condition %}
+  <p>This text will output if condition is True</p> 
+{% endif %}
+```
+
+
+```
+{% if template_variable == "Hello" %}
+  <p>{{template_variable}}, World!</p> 
+{% endif %}
+```
+```
+{% if template_number < 20 %}
+  <p>{{ template_number }} is less than 20.</p> 
+{% elif template_number > 20 %}
+   <p>{{ template_number }} is greater than 20.</p> 
+{% else %}
+   <p>{{ template_number }} is equal to 20.</p> 
+{% endif %}
+```
+
+### for loops 
+
+```
+<ol>
+{% for x in range(3) %}
+  <li>{{ x }}</li>
+{% endfor%}
+</ol>
+```
+```
+{% for element in template_list %}
+{% for char_in_string in “Hello!” %}
+{% for key in template_dict %}
+{% for key, value in template_dict.items() %}
+```
+
+### inheritance 
+
+base.html
+```
+<html>
+  <head>
+    <title>MY WEBSITE</title>
+  </head>
+  <body>
+  {% block content %}{% endblock %}
+  </body>
+</html>
+```
+
+_.html
+```
+{% extends "base.html"  %}
+
+{% block content %}
+    <p>This is my paragraph for this page.</p>
+{% endblock %}
+```
